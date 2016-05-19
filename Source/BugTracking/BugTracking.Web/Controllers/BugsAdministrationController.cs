@@ -35,7 +35,12 @@ namespace BugTracking.Web
         // GET: BugsAdministration/Create
         public ActionResult Create()
         {
-            return View();
+            //Defaults
+            Bug bug = new Bug
+            {
+                Title = "Content default"
+            };
+            return View(bug);
         }
 
         // POST: BugsAdministration/Create
