@@ -41,7 +41,8 @@
             @Html.DisplayFor(modelItem => item.Priority)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            <a href="/BugsAdministration/Edit/@item.Id" data-ajax-show-partial="true">Edit</a> | 
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
@@ -49,3 +50,22 @@
 }
 
 </table>
+<br />
+<hr />
+<br />
+<div id="edit-form"></div>
+
+
+@section scripts {
+    <script type="text/javascript">
+        //debugger;
+        $("*[data-ajax-show-partial]").click(function (e) {
+            e.preventDefault();
+            var url = $(this).attr("href");
+            $.get(url, function (data) {
+                $("#edit-form").html(data);
+            });
+            return false;
+        });
+    </script>
+}
