@@ -40,6 +40,11 @@ namespace BugTracking.Web
             {
                 Title = "Content default"
             };
+
+            if (this.Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View(bug);
         }
 
@@ -71,6 +76,10 @@ namespace BugTracking.Web
             if (bug == null)
             {
                 return HttpNotFound();
+            }
+            if (this.Request.IsAjaxRequest())
+            {
+                return PartialView();
             }
             return View(bug);
         }
