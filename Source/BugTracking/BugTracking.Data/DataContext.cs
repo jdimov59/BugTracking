@@ -6,5 +6,7 @@ namespace BugTracking.Data
     public class DataContext :DbContext
     {
         public IDbSet<Bug> Bugs { get; set; }
+
+        //public IDbSet<BugsCategory> BugsCategories { get; set; }
     }
 }
