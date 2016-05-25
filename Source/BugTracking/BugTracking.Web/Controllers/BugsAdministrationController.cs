@@ -40,6 +40,8 @@ namespace BugTracking.Web
             {
                 Title = "Content default"
             };
+
+            //ViewBag.Categories = db.BugsCategories.ToList().Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
             return View(bug);
         }
 
@@ -48,7 +50,7 @@ namespace BugTracking.Web
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,CreatedOn,Priority")] Bug bug)
+        public ActionResult Create([Bind(Include = "Id,Title,Description,CreatedOn,Priority, Version")] Bug bug)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,8 @@ namespace BugTracking.Web
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            //ViewBag.Categories = db.BugsCategories.ToList().Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
 
             return View(bug);
         }

@@ -1,6 +1,6 @@
 ﻿namespace BugTracking.Models
 {
-    public enum Prioriry
+    public enum Priority
     {
         Low,
         Medium,
